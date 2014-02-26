@@ -45,4 +45,4 @@ Run server
 (venv)$ foreman run python github_oauth.py
 ```
 
-Visit http://localhost:5000/
+Visit [http://localhost:5000/](http://localhost:5000/)

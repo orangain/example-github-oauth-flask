@@ -47,3 +47,8 @@ SESSION_SECRET_KEY=(Random string)
 Visit [http://localhost:5000/](http://localhost:5000/) and you will see
 
 ![Screenshot](https://raw.github.com/orangain/example-github-oauth-flask/master/screenshot.png)
+
+License
+-------
+
+Public Domain. See: `LICENSE`

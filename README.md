@@ -44,4 +44,6 @@ SESSION_SECRET_KEY=(Random string)
 (venv)$ foreman run python github_oauth.py
 ```
 
-Visit [http://localhost:5000/](http://localhost:5000/)
+Visit [http://localhost:5000/](http://localhost:5000/) and you will see
+
+![Screenshot](https://raw.github.com/orangain/example-github-oauth-flask/master/screenshot.png)

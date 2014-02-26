@@ -12,7 +12,7 @@ GITHUB_CLIENT_ID = os.environ['GITHUB_CLIENT_ID']
 GITHUB_CLIENT_SECRET = os.environ['GITHUB_CLIENT_SECRET']
 
 app = Flask(__name__)
-app.secret_key = os.environ['SESSION_SECRET_KEY']
+app.secret_key = os.environ['SESSION_SECRET_KEY']  # necessary for session
 
 # Set up service wrapper for GitHub
 # - `client_id` and `client_secret`: available in an application page of GitHub
@@ -33,10 +33,9 @@ github = OAuth2Service(
 def top():
     """
     Top page
-    - For unauthorized users, show link to sign in.
-    - For authorized users, show welcome message and links
     """
 
+    # For authorized users, show welcome message and links
     if 'username' in session:
         return 'Welcome @{0}! <a href="/repos">Repos</a> <a href="/logout">Logout</a>'.format(
             session['username'])
@@ -45,6 +44,7 @@ def top():
     if 'oauth_state' not in session:
         session['oauth_state'] = binascii.hexlify(os.urandom(24))
 
+    # For unauthorized users, show link to sign in
     authorize_url = github.get_authorize_url(scope='', state=session['oauth_state'])
     return '<a href="{0}">Sign in with GitHub</a>'.format(authorize_url)
 

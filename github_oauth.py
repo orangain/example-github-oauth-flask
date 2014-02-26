@@ -24,7 +24,8 @@ github = OAuth2Service(
 @app.route('/')
 def top():
     if 'username' in session:
-        return 'Welcome @{0}! <a href="/logout">Logout</a>'.format(session['username'])
+        return 'Welcome @{0}! <a href="/repos">Repos</a> <a href="/logout">Logout</a>'.format(
+            session['username'])
 
     if 'oauth_state' not in session:
         session['oauth_state'] = binascii.hexlify(os.urandom(24))
@@ -56,6 +57,15 @@ def logout():
 
     return redirect('/')
 
+
+@app.route('/repos')
+def repos():
+    auth_session = github.get_session(session['access_token'])
+    r = auth_session.get('/user/repos')
+    repos = r.json()
+
+    return '<ul>{0}</ul>'.format(
+        '\n'.join('<li>{0}</li>'.format(repo['full_name']) for repo in repos))
 
 if __name__ == '__main__':
     app.run(debug=True)

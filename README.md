@@ -9,8 +9,8 @@ Requriements
 - Python 3.3+
 - [Foreman](https://github.com/ddollar/foreman)
 
-Prepare
--------
+How to run
+----------
 
 ### 1. Register your application
 
@@ -38,8 +38,7 @@ GITHUB_CLIENT_SECRET=(Your apps' client secret)
 SESSION_SECRET_KEY=(Random string)
 ```
 
-Run server
-----------
+### 4. Run server
 
 ```sh
 (venv)$ foreman run python github_oauth.py
